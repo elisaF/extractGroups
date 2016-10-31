@@ -9,7 +9,7 @@ import drugbank_lookup
 import coreference
 import math
 import nltk 
-import BeautifulSoup as bs 
+from bs4 import BeautifulSoup as bs
 import pickle
 
 from sklearn.feature_extraction.text import CountVectorizer
@@ -37,7 +37,7 @@ def get_tokens_and_lbls(annotated_data_path="summerscales-annotated-abstracts",
     pmids_dict = {}
 
     for f in _get_xml_file_names(annotated_data_path):
-        soup = bs.BeautifulSoup(open(f).read())
+        soup = bs(open(f).read())
         pmid = soup.find("abstract")['id']
         sentences = list(soup.findAll("s"))
         

@@ -1,6 +1,6 @@
 __author__ = 'elisa'
 
-import BeautifulSoup as bs
+from bs4 import BeautifulSoup as bs
 import matplotlib.pyplot as plt
 import os 
 import nltk
@@ -17,7 +17,7 @@ def build_coreference_dict(coreference_data_path='/Users/elisa/Documents/CompLin
             
     for file_name in file_names:
         pmid = file_name[:file_name.find('.')]
-        soup = bs.BeautifulSoup(open(os.path.join(coreference_data_path, file_name)).read())
+        soup = bs(open(os.path.join(coreference_data_path, file_name)).read())
         coref_chain_to_texts = []
         coref_chains = list(soup.findAll("coreference"))
         for coref_chain in coref_chains:
